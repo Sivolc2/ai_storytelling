@@ -31,7 +31,8 @@ else:
 # as db connection might depend on them.
 from repo_src.backend.database.setup import init_db
 from repo_src.backend.database import models, connection # For example endpoints
-from repo_src.backend.functions.items import router as items_router # Import the items router
+# from repo_src.backend.functions.items import router as items_router # Old items router
+from repo_src.backend.routers.story_router import router as story_router # New story router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -45,7 +46,7 @@ async def lifespan(app: FastAPI):
     # Any cleanup code would go here
     print("Application shutdown complete.")
 
-app = FastAPI(title="AI-Friendly Repository Backend", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="My Adventure Tale Backend", version="1.0.0", lifespan=lifespan)
 
 # Configure CORS middleware
 app.add_middleware(
@@ -56,18 +57,13 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-# Include the items router
-app.include_router(items_router)
+# Include the story router
+app.include_router(story_router)
 
 @app.get("/")
 async def read_root():
     """A simple root endpoint to confirm the API is running."""
-    return {"message": "Welcome to the Backend API. Database is initialized."}
-
-@app.get("/api/hello")
-async def read_hello():
-    """A simple API endpoint to test connectivity."""
-    return {"message": "Hello from FastAPI Backend!"}
+    return {"message": "Welcome to My Adventure Tale Backend!"}
 
 # Example (commented out) CRUD endpoints would go here
 # You would typically put these in separate router files (e.g., in an `api` or `routers` directory)

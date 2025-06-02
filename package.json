@@ -1,7 +1,7 @@
 {
-  "name": "example-llm-developer-project",
+  "name": "my-adventure-tale",
   "version": "1.0.0",
-  "description": "A framework for collaborative content creation and management",
+  "description": "An interactive choose-your-own-adventure game for young children using LLMs.",
   "main": "index.js",
   "type": "module",
   "scripts": {

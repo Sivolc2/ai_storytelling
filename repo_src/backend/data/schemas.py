@@ -1,7 +1,23 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List, Dict, Any
 from datetime import datetime
 
+# --- Schemas for My Adventure Tale ---
+class StoryStartRequest(BaseModel):
+    theme: str
+
+class StoryChoiceRequest(BaseModel):
+    story_history: List[Dict[str, Any]] # Using Any for parts content type
+    choice_text: str
+
+class StorySegmentResponse(BaseModel):
+    story_text: str
+    image_prompt: str
+    choices: List[str]
+    updated_story_history: List[Dict[str, Any]] # Using Any for parts content type
+
+
+# --- Old Schemas (from Item CRUD example, can be removed if Item API is fully removed) ---
 class ItemBase(BaseModel):
     name: str
     description: Optional[str] = None

@@ -4,8 +4,7 @@
   font-weight: 400;
   
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Default colors are now handled by App.css for the game theme */
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,12 +12,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure body takes full height and has some basic defaults if App.css doesn't cover all cases */
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column; /* Changed to column to allow header/main/footer flow */
+  align-items: center; /* Center content horizontally */
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f0f8ff; /* Default background, can be overridden by App.css */
 }
 
 #root {
@@ -26,6 +28,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  width: 100%; /* Allow #root to expand */
 }
 
 h1 {
@@ -33,6 +36,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* General button styling, can be overridden */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -40,7 +44,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9; /* Lighter default for buttons if not themed */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -62,8 +66,5 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 } 

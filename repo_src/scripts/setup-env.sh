@@ -21,6 +21,7 @@ DATABASE_URL=sqlite:///./app.db
 # API settings
 PORT=8000
 LOG_LEVEL=info
+GOOGLE_API_KEY="" # Add your Google API Key for Gemini here
 EOF
     
     echo "${BACKEND_ENV_FILE} created."
